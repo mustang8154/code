@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt - Finance Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Finance Tracker</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('add_income') }}">Add Income</a>
+            <a href="{{ url_for('add_expense') }}">Add Expense</a>
+            <a href="{{ url_for('add_recurring') }}">Recurring</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+    
+    <main class="receipt-container">
+        <h2>Receipt for Transaction</h2>
+        <div class="receipt-image">
+            {% if receipt_path %}
+                <img src="{{ url_for('static', filename=receipt_path.split('static/')[1]) }}" alt="Receipt Image">
+            {% else %}
+                <p>No receipt uploaded for this transaction.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="btn">Back to Dashboard</a>
+    </main>
+</body>
+</html>
